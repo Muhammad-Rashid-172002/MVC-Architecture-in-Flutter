@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practics/views/users_view.dart';
+import 'package:practics/user_interface/splash_Screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +17,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Todo App',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const UsersView(),
+      theme: ThemeData(primarySwatch: Colors.purple),
+      home: const SplashScreen(),
     );
   }
 }

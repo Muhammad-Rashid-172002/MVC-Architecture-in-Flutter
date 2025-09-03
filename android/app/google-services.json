@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "495368636469",
+    "project_id": "social-media-app-d516f",
+    "storage_bucket": "social-media-app-d516f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495368636469:android:e60f6a6559715b71df497c",
+        "android_client_info": {
+          "package_name": "com.example.practics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "495368636469-6neabj2nj3gs9ri3p24v72rji3k7eskm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVAEMma179qtJ3JrDQxnNl5pwd7wnr3fk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "495368636469-6neabj2nj3gs9ri3p24v72rji3k7eskm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:practics/user_interface/auth/Login_Screen.dart';
 import 'package:practics/user_interface/auth/sign_up.dart';
 import 'package:practics/widgets/round_button.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPassword = TextEditingController();
 
   @override
   void dispose() {
@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.deepPurple,
         title: Text(
-          'Login',
+          'Sign Up',
           style: GoogleFonts.aBeeZee(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -49,6 +49,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 key: _formKey,
                 child: Column(
                   children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Welcome Back",
+                          style: GoogleFonts.aDLaMDisplay(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
+                        ),
+                        Icon(Icons.back_hand_rounded, color: Colors.amber),
+                      ],
+                    ),
+                    SizedBox(height: 10),
                     TextFormField(
                       controller: emailController,
                       decoration: InputDecoration(
@@ -100,32 +114,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         return null; //  valid password
                       },
                     ),
-                    SizedBox(height: 20),
-                    TextFormField(
-                      controller: confirmPassword,
-                      decoration: InputDecoration(
-                        filled: true,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        hintText: 'Confirm Password',
-                        labelText: 'Confirm Password',
-                        prefixIcon: Icon(Icons.lock),
-                      ),
-                      validator: (value) {
-                        if (value!.isEmpty) return 'Empty';
-                        if (value != passwordController.text)
-                          return 'Password did not match';
-                        return null;
-                      },
-                    ),
                   ],
                 ),
               ),
 
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(onPressed: () {}, child: Text('Forget Password')),
+                ],
+              ),
+
               SizedBox(height: 20),
               RoundButton(
-                title: 'Login',
+                title: 'Sign Up',
                 onTap: () {
                   if (_formKey.currentState!.validate()) {}
                 },
@@ -134,15 +136,15 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account?"),
+                  Text("Already have an account"),
                   TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SignUpScreen()),
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
-                    child: Text('Sign Up'),
+                    child: Text('Login'),
                   ),
                 ],
               ),

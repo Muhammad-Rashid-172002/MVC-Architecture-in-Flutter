@@ -22,11 +22,6 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color.fromARGB(255, 247, 227, 164), Colors.white],
-          ),
-        ),
         child: Center(
           child: Text(
             'Welcome to Social App',

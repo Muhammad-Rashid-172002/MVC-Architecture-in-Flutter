@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:practics/firebase_Service/splash_Service.dart';
+import 'package:practics/res/fonts.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  SplashService splashService = SplashService();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    splashService.isLogin(context);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: Text(
-            'Welcome to Social App',
-            style: GoogleFonts.aBeeZee(
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
-              color: const Color.fromARGB(255, 255, 208, 0),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: Center(
+                child: Text(
+                  'Socail Media App',
+                  style: TextStyle(
+                    fontFamily: AppFonts.sfProDisplayBold,
+                    fontSize: 40,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

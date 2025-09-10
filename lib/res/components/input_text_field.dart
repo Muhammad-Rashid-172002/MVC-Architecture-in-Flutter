@@ -25,27 +25,40 @@ class InputTextField extends StatelessWidget {
   final TextInputType keyboardType;
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: myCrontroller,
-      focusNode: focusNode,
-      onFieldSubmitted: onFieldSubmittedValue,
-      validator: onvalidator,
-      obscureText: obscureText,
-      keyboardType: keyboardType,
-      decoration: InputDecoration(
-        hintText: hint,
-        contentPadding: EdgeInsets.all(15),
-        hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-          color: AppColors.hintColor,
-          fontSize: 16,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: AppColors.textFieldDefaultFocus),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: AppColors.secondaryColor),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: TextFormField(
+        controller: myCrontroller,
+        focusNode: focusNode,
+        onFieldSubmitted: onFieldSubmittedValue,
+        validator: onvalidator,
+        obscureText: obscureText,
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+          hintText: hint,
+          contentPadding: EdgeInsets.all(15),
+          hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            color: AppColors.hintColor,
+            fontSize: 16,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: AppColors.textFieldDefaultFocus),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: AppColors.secondaryColor),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: AppColors.alertColor),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: AppColors.textFieldDefaultBorderColor,
+            ),
+          ),
         ),
       ),
     );

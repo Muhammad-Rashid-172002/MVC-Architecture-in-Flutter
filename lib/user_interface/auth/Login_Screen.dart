@@ -15,24 +15,27 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          InputTextField(
-            myCrontroller: emailController,
-            focusNode: emailFcusNode,
-            hint: 'Email',
-            obscureText: false,
-            onFieldSubmittedValue: (value) {},
-            onvalidator: (value) {
-              return value.isEmplty ? 'Enter email' : null;
-            },
-            keyboardType: TextInputType.emailAddress,
-          ),
-          SizedBox(height: 40),
-          RoundButton(title: 'Login', loading: false, onpress: () {}),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            InputTextField(
+              myCrontroller: emailController,
+              focusNode: emailFcusNode,
+              hint: 'Email',
+              obscureText: false,
+              onFieldSubmittedValue: (value) {},
+              onvalidator: (value) {
+                return value.isEmplty ? 'Enter email' : null;
+              },
+              keyboardType: TextInputType.emailAddress,
+            ),
+            SizedBox(height: 40),
+            RoundButton(title: 'Login', loading: false, onpress: () {}),
+          ],
+        ),
       ),
     );
   }

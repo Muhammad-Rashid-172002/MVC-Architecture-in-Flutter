@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:practics/GETX/counterApp.dart';
 import 'package:practics/res/color.dart';
 import 'package:practics/res/fonts.dart';
 import 'package:practics/utils/routes/routes.dart';
@@ -109,7 +110,8 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
       ),
-      initialRoute: RouteName.loginView,
+      // home: CounterPage(),
+      initialRoute: RouteName.splashScreen,
       onGenerateRoute: Routes.generateRoute,
     );
   }

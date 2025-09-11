@@ -46,6 +46,7 @@ dependencies:
   persistent_bottom_nav_bar:
   flutter_svg: ^1.1.5
   provider: ^6.1.5+1
+  get: ^4.7.2
 
 dev_dependencies:
   flutter_test:

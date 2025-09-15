@@ -7,6 +7,7 @@ import 'package:get/state_manager.dart';
 class CounterController extends GetxController {
   // reactive integer
   final count = 0.obs;
+  final pass = "".obs;
 
   void increment() => count.value++;
   void decrement() {
@@ -14,16 +15,33 @@ class CounterController extends GetxController {
   }
 
   void reset() => count.value = 0;
+
+  updatePass() {}
 }
 
-class CounterPage extends StatelessWidget {
+class CounterPage extends StatefulWidget {
   const CounterPage({super.key});
 
   @override
+  State<CounterPage> createState() => _CounterPageState();
+}
+
+class _CounterPageState extends State<CounterPage> {
+  late CounterController controller;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = Get.put(CounterController());
+    print("init state called");
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print("build called");
     // Put controller into GetX dependency system.
     // Get.put creates and stores the controller so it's accessible via Get.find()
-    final CounterController controller = Get.put(CounterController());
 
     return Scaffold(
       appBar: AppBar(

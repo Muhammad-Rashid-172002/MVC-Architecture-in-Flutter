@@ -110,7 +110,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       // home: CounterPage(),
-      initialRoute: RouteName.loginView,
+      initialRoute: RouteName.splashScreen,
       onGenerateRoute: Routes.generateRoute,
     );
   }

@@ -23,26 +23,20 @@ class SignUpController with ChangeNotifier {
     String password,
     String confirmPassword,
   ) async {
-    // check confirm password
-    if (password != confirmPassword) {
-      Utils.toastMessage("Passwords do not match");
-      return;
-    }
-
     setLoading(true);
 
     try {
-      // Create user in Firebase Auth
+      // ✅ create user in firebase auth
       UserCredential value = await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      // Save user info in Realtime Database
+      // ✅ save user info in realtime database
       await ref.child(value.user!.uid).set({
         'uid': value.user!.uid,
         'email': value.user!.email,
-        'onlineStatus': 'offline',
+        'onlineStatus': 'noOne',
         'phone': '',
         'username': username,
         'profile': '',
@@ -50,17 +44,25 @@ class SignUpController with ChangeNotifier {
 
       setLoading(false);
 
-      // Show success message
-      Utils.toastMessage("Account created successfully");
+      // ✅ green toast on success
+      Utils.toastSuccess("Account created successfully");
 
-      // Navigate to dashboard
-      Navigator.pushNamed(context, RouteName.dashboardScreen);
+      // ✅ navigate to dashboard
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        RouteName.dashboardScreen,
+        (route) => true,
+      );
     } on FirebaseAuthException catch (e) {
       setLoading(false);
-      Utils.toastMessage(e.message ?? "Authentication failed");
+
+      // ❌ red toast on Firebase error
+      Utils.toastError(e.message ?? "Something went wrong");
     } catch (e) {
       setLoading(false);
-      Utils.toastMessage("Error: ${e.toString()}");
+
+      // ❌ red toast on unexpected error
+      Utils.toastError("Error: ${e.toString()}");
     }
   }
 }

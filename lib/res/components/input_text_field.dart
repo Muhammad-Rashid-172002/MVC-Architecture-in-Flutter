@@ -4,12 +4,12 @@ import 'package:practics/res/color.dart';
 class InputTextField extends StatelessWidget {
   const InputTextField({
     Key? key,
-    required this.myCrontroller,
+    required this.myController,
     required this.focusNode,
     required this.hint,
     required this.obscureText,
-    required this.onFieldSubmittedValue,
-    required this.onvalidator,
+    this.onFieldSubmittedValue,
+    this.onValidator,
     this.enabled = true,
     this.autoFocus = false,
     this.prefixIcon,
@@ -17,12 +17,12 @@ class InputTextField extends StatelessWidget {
     required this.keyboardType,
   }) : super(key: key);
 
-  final TextEditingController myCrontroller;
+  final TextEditingController myController;
   final FocusNode focusNode;
   final String hint;
   final bool obscureText;
-  final ValueChanged<String> onFieldSubmittedValue;
-  final FormFieldValidator onvalidator;
+  final ValueChanged<String>? onFieldSubmittedValue; // ✅ nullable
+  final FormFieldValidator<String>? onValidator; // ✅ type-safe
   final bool enabled, autoFocus;
   final TextInputType keyboardType;
   final Widget? prefixIcon, suffixIcon;
@@ -32,10 +32,10 @@ class InputTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: TextFormField(
-        controller: myCrontroller,
+        controller: myController,
         focusNode: focusNode,
         onFieldSubmitted: onFieldSubmittedValue,
-        validator: onvalidator,
+        validator: onValidator,
         obscureText: obscureText,
         keyboardType: keyboardType,
         enabled: enabled,

@@ -7,7 +7,7 @@ class SplashService {
   void isLogin(BuildContext context) {
     Timer(
       Duration(seconds: 3),
-      () => Navigator.pushNamed(context, RouteName.SignInScreen),
+      () => Navigator.pushNamed(context, RouteName.signUpScreen),
     );
   }
 }

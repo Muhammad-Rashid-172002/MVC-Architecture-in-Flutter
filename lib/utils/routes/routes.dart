@@ -11,14 +11,14 @@ class Routes {
       case RouteName.splashScreen:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
 
-      case RouteName.SignInScreen:
+      case RouteName.signInScreen:
         return MaterialPageRoute(builder: (_) => const SignInScreen());
 
-      case RouteName.SignUpScreen:
+      case RouteName.signUpScreen:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
 
       case RouteName.dashboardScreen:
-        return MaterialPageRoute(builder: (_) => const DashboardSreen());
+        return MaterialPageRoute(builder: (_) => const DashboardScreen());
 
       default:
         return MaterialPageRoute(

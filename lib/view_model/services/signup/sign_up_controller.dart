@@ -23,20 +23,26 @@ class SignUpController with ChangeNotifier {
     String password,
     String confirmPassword,
   ) async {
+    // check confirm password
+    if (password != confirmPassword) {
+      Utils.toastMessage("Passwords do not match");
+      return;
+    }
+
     setLoading(true);
 
     try {
-      // create user in firebase auth
+      // Create user in Firebase Auth
       UserCredential value = await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      // save user info in realtime database
+      // Save user info in Realtime Database
       await ref.child(value.user!.uid).set({
         'uid': value.user!.uid,
         'email': value.user!.email,
-        'onlineStatus': 'noOne',
+        'onlineStatus': 'offline',
         'phone': '',
         'username': username,
         'profile': '',
@@ -44,21 +50,17 @@ class SignUpController with ChangeNotifier {
 
       setLoading(false);
 
-      // show success msg
+      // Show success message
       Utils.toastMessage("Account created successfully");
 
-      // navigate to dashboard
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        RouteName.dashboardScreen,
-        (route) => false,
-      );
+      // Navigate to dashboard
+      Navigator.pushNamed(context, RouteName.dashboardScreen);
     } on FirebaseAuthException catch (e) {
       setLoading(false);
-      Utils.toastMessage(e.message ?? "Something went wrong");
+      Utils.toastMessage(e.message ?? "Authentication failed");
     } catch (e) {
       setLoading(false);
-      Utils.toastMessage(e.toString());
+      Utils.toastMessage("Error: ${e.toString()}");
     }
   }
 }

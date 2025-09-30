@@ -16,7 +16,7 @@ class SignUpController with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> signUp(
+  Future<bool> signUp(
     BuildContext context,
     String username,
     String email,
@@ -26,13 +26,14 @@ class SignUpController with ChangeNotifier {
     setLoading(true);
 
     try {
-      // ✅ create user in firebase auth
+      print("sign up");
+      //  create user in firebase auth
       UserCredential value = await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      // ✅ save user info in realtime database
+      //  save user info in realtime database
       await ref.child(value.user!.uid).set({
         'uid': value.user!.uid,
         'email': value.user!.email,
@@ -44,25 +45,32 @@ class SignUpController with ChangeNotifier {
 
       setLoading(false);
 
-      // ✅ green toast on success
+      print("sign up success");
+      //  green toast on success
       Utils.toastSuccess("Account created successfully");
-
-      // ✅ navigate to dashboard
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        RouteName.dashboardScreen,
-        (route) => true,
-      );
+      notifyListeners();
+      return true;
+      // navigate to dashboard
+      // Navigator.pushNamed(context, RouteName.dashboardScreen);
     } on FirebaseAuthException catch (e) {
       setLoading(false);
 
-      // ❌ red toast on Firebase error
+      print("sign up failed ${e.message}");
+      //  red toast on Firebase error
       Utils.toastError(e.message ?? "Something went wrong");
+      return false;
     } catch (e) {
       setLoading(false);
 
-      // ❌ red toast on unexpected error
+      //  red toast on unexpected error
       Utils.toastError("Error: ${e.toString()}");
+
+      print("sign up failed");
+      notifyListeners();
+      return false;
+    } finally {
+      setLoading(false);
+      notifyListeners();
     }
   }
 }

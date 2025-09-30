@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -63,7 +54,40 @@ class DefaultFirebaseOptions {
     messagingSenderId: '495368636469',
     projectId: 'social-media-app-d516f',
     storageBucket: 'social-media-app-d516f.firebasestorage.app',
+    androidClientId: '495368636469-v49jgp84n5lnvpl49gm9b2au5sje59i9.apps.googleusercontent.com',
     iosClientId: '495368636469-et6gef11tsks209opi850esqfq4v1kan.apps.googleusercontent.com',
     iosBundleId: 'com.example.practics',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCD6mKu8Vkj4hCrvUF9Pml-PQSeYfUudDc',
+    appId: '1:495368636469:web:68e1241b40830352df497c',
+    messagingSenderId: '495368636469',
+    projectId: 'social-media-app-d516f',
+    authDomain: 'social-media-app-d516f.firebaseapp.com',
+    storageBucket: 'social-media-app-d516f.firebasestorage.app',
+    measurementId: 'G-FTBMGBXN75',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyAlaFuc7mxZERJJNdhBJc6h5r-0IMeQfEI',
+    appId: '1:495368636469:ios:e68bea3370fe43bddf497c',
+    messagingSenderId: '495368636469',
+    projectId: 'social-media-app-d516f',
+    storageBucket: 'social-media-app-d516f.firebasestorage.app',
+    androidClientId: '495368636469-v49jgp84n5lnvpl49gm9b2au5sje59i9.apps.googleusercontent.com',
+    iosClientId: '495368636469-et6gef11tsks209opi850esqfq4v1kan.apps.googleusercontent.com',
+    iosBundleId: 'com.example.practics',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCD6mKu8Vkj4hCrvUF9Pml-PQSeYfUudDc',
+    appId: '1:495368636469:web:131fdc5677bc80e8df497c',
+    messagingSenderId: '495368636469',
+    projectId: 'social-media-app-d516f',
+    authDomain: 'social-media-app-d516f.firebaseapp.com',
+    storageBucket: 'social-media-app-d516f.firebasestorage.app',
+    measurementId: 'G-QLYK4LH03Q',
+  );
+
 }

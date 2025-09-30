@@ -46,6 +46,7 @@ class _MyAppState extends State<MyApp> {
             height: 1.6,
           ),
           headlineMedium: TextStyle(
+
             fontSize: 32,
             fontFamily: AppFonts.sfProDisplayMedium,
             color: AppColors.primaryTextTextColor,

@@ -328,17 +328,31 @@ class _SignUpScreenState extends State<SignUpScreen>
                                           onpress: () async {
                                             if (_formKey.currentState!
                                                 .validate()) {
-                                              await provider.signUp(
-                                                context,
-                                                nameController.text.trim(),
-                                                emailController.text.trim(),
-                                                passwordController.text.trim(),
-                                                confirmPasswordController.text
-                                                    .trim(),
-                                              );
+                                              print("button pressed");
+                                              final successSignUp =
+                                                  await provider.signUp(
+                                                    context,
+                                                    nameController.text.trim(),
+                                                    emailController.text.trim(),
+                                                    passwordController.text
+                                                        .trim(),
+                                                    confirmPasswordController
+                                                        .text
+                                                        .trim(),
+                                                  );
+                                              if (successSignUp) {
+                                                print("success");
+                                                Navigator.pushNamed(
+                                                  context,
+                                                  RouteName.dashboardScreen,
+                                                );
+                                                print("navigation done");
+                                              }
                                             }
                                           },
                                         ),
+                                      
+                                      
                                       ),
                                     ),
                                   ],

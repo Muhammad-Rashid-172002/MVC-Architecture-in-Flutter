@@ -45,7 +45,7 @@ class SignUpController with ChangeNotifier {
 
       setLoading(false);
 
-      print("sign up success");
+      print("Sign up success");
       //  green toast on success
       Utils.toastSuccess("Account created successfully");
       notifyListeners();

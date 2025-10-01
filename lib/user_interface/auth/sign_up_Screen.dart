@@ -341,12 +341,12 @@ class _SignUpScreenState extends State<SignUpScreen>
                                                         .trim(),
                                                   );
                                               if (successSignUp) {
-                                                print("success");
+                                                print("Success----->");
                                                 Navigator.pushNamed(
                                                   context,
                                                   RouteName.dashboardScreen,
                                                 );
-                                                print("navigation done");
+                                                print("Navigation done----->");
                                               }
                                             }
                                           },

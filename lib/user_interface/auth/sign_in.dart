@@ -136,7 +136,7 @@ class _SignInScreenState extends State<SignInScreen>
                               key: _formKey,
                               child: Column(
                                 children: [
-                                  /// Email
+                                  //Email
                                   InputTextField(
                                     myController: emailController,
                                     focusNode: emailFocusNode,
@@ -155,7 +155,7 @@ class _SignInScreenState extends State<SignInScreen>
                                   ),
                                   const SizedBox(height: 15),
 
-                                  /// Password
+                                  // Password
                                   TextFormField(
                                     controller: passwordController,
                                     focusNode: passwordFocusNode,
